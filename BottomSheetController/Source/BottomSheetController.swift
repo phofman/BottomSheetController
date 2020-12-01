@@ -229,17 +229,17 @@ private extension BottomSheetController {
     }
     
     func add(childViewController viewController: UIViewController) {
-        addChildViewController(viewController)
+      addChild(viewController)
         view.addSubview(viewController.view)
         viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        viewController.didMove(toParentViewController: self)
+      viewController.didMove(toParent: self)
         configuration?.scrollableView?.panGestureRecognizer.require(toFail: panGesture)
     }
     
     func remove(childViewController viewController: UIViewController) {
-        viewController.willMove(toParentViewController: nil)
+      viewController.willMove(toParent: nil)
         viewController.view.removeFromSuperview()
-        viewController.removeFromParentViewController()
+      viewController.removeFromParent()
     }
     
     func moveSheet(to target: CGPoint, velocity: CGPoint = .zero) {
